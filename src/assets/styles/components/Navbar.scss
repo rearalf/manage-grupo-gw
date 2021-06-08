@@ -1,0 +1,126 @@
+@import "../variables.scss";
+
+header {
+	margin-bottom: 5em;
+
+	.NavBar {
+		display: flex;
+		justify-content: space-between;
+		background-color: $background-secondary;
+		box-shadow: 0 .5em .5em 0 $shadow-color-first;
+		max-height: 5em;
+
+		.center__side {
+			-webkit-app-region: drag;
+			flex: 1;
+			display: flex;
+			align-items: center;
+
+			h1 {
+				color: $color-text-first;
+			}
+		}
+
+		.left__side,
+		.right__side {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+
+			.left__side__toggle,
+			.right__side__button__icon {
+				padding: 1em;
+				cursor: pointer;
+				background-color: transparent;
+				border: transparent;
+				.svg {
+					path {
+						fill: $color-text-link;
+					}
+				}
+
+				&:hover {
+					background-color: $color-text-first;
+					.svg {
+						path {
+							fill: $background-primary;
+						}
+					}
+				}
+			}
+
+			.left__side__toggle {
+				margin-right: 10px;
+			}
+		}
+
+		.hide__btn {
+			display: none;
+		}
+	}
+
+	.noneTogle {
+		transform: translateX(-300px);
+	}
+
+	.side__nav {
+		height: 100vh;
+		max-width: 300px;
+		width: 250px;
+		background-color: $background-secondary;
+		box-shadow: .5em 0 .5em .2em $shadow-color-first;
+		position: absolute;
+		top: 0;
+		left: 0;
+		transition: all .5s ease-in-out;
+
+		.brand__nav {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin-bottom: 3em;
+
+			.brand__text {
+				padding-right: 10px;
+			}
+
+			.btn__toggle {
+				padding: 1em;
+				cursor: pointer;
+				background-color: transparent;
+				border: transparent;
+				.svg {
+					path {
+						fill: $color-text-link;
+					}
+				}
+
+				&:hover {
+					background-color: $color-text-first;
+					.svg {
+						path {
+							fill: $background-primary;
+						}
+					}
+				}
+			}
+		}
+
+		.navbar__nav {
+			.nav__item {
+				.nav__link {
+					display: inline-block;
+					cursor: pointer;
+					padding: 15px 25px;
+					width: 100%;
+					&:hover {
+						background-color: $background-primary;
+						a {
+							color: $color-text-link-hover;
+						}
+					}
+				}
+			}
+		}
+	}
+}

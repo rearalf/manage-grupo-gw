@@ -1,12 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { AppLayout } from '../components/AppLayout';
 
-export const About = () => {
+export const Category = () => {
 	return (
 		<AppLayout>
-			<h1>About </h1>
-			<Link to="/">Home</Link>
+			<h1>Category</h1>
 		</AppLayout>
 	);
 };

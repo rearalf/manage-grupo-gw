@@ -1,6 +1,7 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain, Notification } = require('electron');
 const path = require('path');
 const url = require('url');
+const ipc = ipcMain;
 
 let mainWindow,
 	dev = false;
@@ -16,11 +17,11 @@ if (process.platform === 'win32') {
 
 function createWindow(){
 	mainWindow = new BrowserWindow({
-		width: 1024,
-		height: 768,
-		minHeight: 800,
-		minWidth: 600,
-		/* closable: false, */
+		width: 1200,
+		height: 680,
+		minWidth: 940,
+		minHeight: 560,
+		frame: false,
 		show: false,
 		webPreferences: {
 			nodeIntegration: true,
@@ -64,9 +65,40 @@ function createWindow(){
 		}
 	});
 
-	mainWindow.on('closed', function(){
+	/* mainWindow.on('closed', function(){
 		mainWindow = null;
+	}); */
+
+	ipc.on('closed', () => {
+		mainWindow.close();
 	});
+
+	ipc.on('minimized', () => {
+		mainWindow.minimize();
+	});
+
+	ipc.on('maximized', () => {
+		if (mainWindow.isMaximized()) {
+			mainWindow.restore();
+		}
+		else {
+			mainWindow.maximize();
+		}
+	});
+
+	mainWindow.on('maximize', () => {
+		mainWindow.webContents.send('isMaximized');
+	});
+	mainWindow.on('unmaximize', () => {
+		mainWindow.webContents.send('isRestore');
+	});
+}
+
+const NOTIFICATION_TITLE = 'Starting';
+const NOTIFICATION_BODY = 'The program is starting';
+
+function showNotification(){
+	new Notification({ title: NOTIFICATION_TITLE, body: NOTIFICATION_BODY }).show();
 }
 
 app.on('ready', createWindow);
@@ -76,6 +108,8 @@ app.on('window-all-closed', () => {
 		app.quit();
 	}
 });
+
+app.whenReady().then(showNotification);
 
 app.on('activate', () => {
 	if (mainWindow === null) {

@@ -1,0 +1,44 @@
+@import "./variables.scss";
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@500;600;700&family=Nunito&family=Open+Sans&display=swap');
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+body {
+	background-color: $background-primary;
+	font-size: 14px;
+	font-family: $font-family-Open-Sans;
+	color: $color-text-first;
+}
+
+h1 {
+	font-family: $font-family-Libre-Franklin;
+	font-weight: $font-weight-700;
+	font-size: 1.428571429em;
+	color: $color-text-second;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+	color: $color-text-link;
+	font-family: $font-family-Nunito;
+	&:hover {
+		color: $color-text-link-hover;
+	}
+}
+
+.content {
+	padding: 0 4em;
+	transition: padding .5s ease-in-out;
+}
+
+.layout {
+	padding: 0 20em;
+}

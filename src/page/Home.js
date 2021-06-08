@@ -1,12 +1,13 @@
 import React from 'react';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { AppLayout } from '../components/AppLayout';
 import '../assets/styles/home.scss';
 
 export const Home = () => {
 	return (
-		<div>
+		<AppLayout>
 			<h1>Hello World</h1>
 			<Link to="/about">About</Link>
-		</div>
+		</AppLayout>
 	);
 };
