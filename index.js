@@ -17,9 +17,9 @@ if (process.platform === 'win32') {
 
 function createWindow(){
 	mainWindow = new BrowserWindow({
-		width: 1200,
-		height: 680,
-		minWidth: 940,
+		width: 800,
+		height: 600,
+		minWidth: 640,
 		minHeight: 560,
 		frame: false,
 		show: false,
@@ -94,12 +94,13 @@ function createWindow(){
 	});
 }
 
-const NOTIFICATION_TITLE = 'Starting';
+/* const NOTIFICATION_TITLE = 'Starting';
 const NOTIFICATION_BODY = 'The program is starting';
 
 function showNotification(){
 	new Notification({ title: NOTIFICATION_TITLE, body: NOTIFICATION_BODY }).show();
-}
+} */
+/* app.whenReady().then(showNotification); */
 
 app.on('ready', createWindow);
 
@@ -108,8 +109,6 @@ app.on('window-all-closed', () => {
 		app.quit();
 	}
 });
-
-app.whenReady().then(showNotification);
 
 app.on('activate', () => {
 	if (mainWindow === null) {

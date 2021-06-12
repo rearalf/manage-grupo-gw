@@ -38,6 +38,9 @@ module.exports = {
 			'process.env.NODE_ENV': JSON.stringify('development'),
 		}),
 	],
+	resolve: {
+		mainFields: [ 'firebase', 'browser', 'module', 'main' ],
+	},
 	devtool: 'cheap-source-map',
 	devServer: {
 		contentBase: path.resolve(__dirname, 'dist'),

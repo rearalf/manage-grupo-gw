@@ -1,9 +1,19 @@
-$background-primary: #f2f2f2;
+$background-primary: #f7f7f7;
 $background-secondary: #e5e5e5;
 
-$shadow-color-first: #8c8c8c4d;
+$background-button-primary: #0f5cbf;
+$background-button-primary-hover: #0b3f8e;
+$text-color-button-primary: #f2f2f2;
+$box-shadow-button-primary: 4px 4px 4px #0f5abd66;
+$background-button-secondary: #d9d9d9;
+$background-button-secondary-hover: #bfbfbf;
+$text-color-button-secondary: #c92a18;
+$box-shadow-button-secondary: 4px 4px 4px #d9d9d9;
+
+$shadow-color-first: #8c8c8c66;
 $shadow-color-second: #bfbfbf66;
 
+$color-text-icon-hover: #f2f2f2;
 $color-text-first: #8c8c8c;
 $color-text-second: #be3323;
 $color-text-third: #db4a39;
@@ -17,3 +27,5 @@ $font-family-Nunito: 'Nunito', sans-serif;
 $font-weight-500: 500;
 $font-weight-600: 600;
 $font-weight-700: 700;
+
+$first-transition: .3s ease-in-out;

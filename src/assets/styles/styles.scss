@@ -16,8 +16,15 @@ body {
 h1 {
 	font-family: $font-family-Libre-Franklin;
 	font-weight: $font-weight-700;
-	font-size: 1.428571429em;
+	font-size: 20px;
 	color: $color-text-second;
+}
+
+h2 {
+	font-family: $font-family-Libre-Franklin;
+	font-weight: $font-weight-600;
+	font-size: 18px;
+	color: $color-text-third;
 }
 
 ul {
@@ -34,11 +41,30 @@ a {
 	}
 }
 
+.btn {
+	padding: 18px 32px;
+	font-size: 16px;
+	font-family: $font-family-Nunito;
+	border: none;
+	border-radius: 5px;
+	transition: all .3s ease-in-out;
+	cursor: pointer;
+}
+
+.btn__primary {
+	background-color: $background-button-primary;
+	color: $text-color-button-primary;
+	&:hover {
+		box-shadow: $box-shadow-button-primary;
+		background-color: $background-button-primary-hover;
+	}
+}
+
 .content {
-	padding: 0 4em;
+	padding: 6em 4em;
 	transition: padding .5s ease-in-out;
 }
 
 .layout {
-	padding: 0 20em;
+	padding: 6em 2em 6em 20em;
 }

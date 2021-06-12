@@ -59,8 +59,8 @@ export const Navbar = ({ setToggle, toggle }) => {
 						</Link>
 					</li>
 					<li className="nav__item">
-						<Link className="nav__link" to="/category">
-							Category
+						<Link className="nav__link" to="/catalogs">
+							Catálogos
 						</Link>
 					</li>
 				</ul>

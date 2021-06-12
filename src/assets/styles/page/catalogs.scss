@@ -1,0 +1,82 @@
+@import "../variables.scss";
+
+.Catalogs {
+	h1 {
+		margin-bottom: 25px;
+	}
+
+	.btn__group {
+		margin-bottom: 25px;
+		text-align: right;
+	}
+
+	.cards {
+		.card__catalogs {
+			background-color: $background-secondary;
+			border-radius: 5px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			grid-gap: 25px;
+			transition: all $first-transition;
+			&:hover {
+				box-shadow: 4px 4px 5px 0 $shadow-color-first;
+			}
+			.card__image {
+				display: inherit;
+				img {
+					border-top-left-radius: 5px;
+					border-top-right-radius: 5px;
+					width: 100%;
+				}
+			}
+			.card__information {
+				flex-basis: 50%;
+				padding: 0 20px;
+				h2 {
+					margin-bottom: 15px;
+				}
+				p {
+					display: -webkit-box;
+					-webkit-line-clamp: 5;
+					-webkit-box-orient: vertical;
+					overflow: hidden;
+				}
+			}
+			.card__action {
+				padding: 20px;
+				display: flex;
+				justify-content: space-around;
+				.btn__action {
+					background-color: transparent;
+					border: 0;
+					margin: 0 10px;
+					padding: 10px;
+					cursor: pointer;
+					transition: all $first-transition;
+					border-radius: 5px;
+					.svg {
+						path {
+							fill: $color-text-icon-hover;
+						}
+					}
+					&:nth-child(2n + 1) {
+						background-color: #23be3d;
+					}
+					&:nth-child(2n) {
+						background-color: #be3323;
+					}
+					&:hover {
+						opacity: .9;
+						&:nth-child(2n + 1) {
+							box-shadow: 4px 4px 4px 0 hsl(130, 69%, 44%, .5);
+						}
+						&:nth-child(2n) {
+							box-shadow: 4px 4px 4px 0 hsl(6, 69%, 44%, .5);
+						}
+					}
+				}
+			}
+		}
+	}
+}
