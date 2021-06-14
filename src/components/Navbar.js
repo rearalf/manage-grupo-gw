@@ -59,7 +59,7 @@ export const Navbar = ({ setToggle, toggle }) => {
 						</Link>
 					</li>
 					<li className="nav__item">
-						<Link className="nav__link" to="/catalogs">
+						<Link className="nav__link" to="/catalogs/show">
 							Catálogos
 						</Link>
 					</li>

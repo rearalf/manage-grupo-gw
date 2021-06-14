@@ -49,6 +49,7 @@ a {
 	border-radius: 5px;
 	transition: all .3s ease-in-out;
 	cursor: pointer;
+	text-align: center;
 }
 
 .btn__primary {
@@ -57,6 +58,46 @@ a {
 	&:hover {
 		box-shadow: $box-shadow-button-primary;
 		background-color: $background-button-primary-hover;
+	}
+}
+
+.btn__save {
+	background-color: $background-button-save;
+	color: $text-color-button-save;
+	&:hover {
+		box-shadow: $box-shadow-button-save;
+		background-color: $background-button-save-hover;
+	}
+}
+
+.btn__danger {
+	background-color: $background-button-danger;
+	color: $text-color-button-danger;
+	border: 2px solid $border-button-danger;
+	&:hover {
+		background-color: $background-button-danger-hover;
+		color: $text-color-button-danger-hover;
+		box-shadow: $box-shadow-button-danger;
+	}
+}
+
+.progress__bar {
+	width: 300px;
+	height: 20px;
+	border-radius: 5px;
+	background-color: $background-secondary;
+	box-shadow: 4px 4px 4px 0 $shadow-color-second;
+	.percentage {
+		color: $text-color-button-save;
+		border-radius: 5px;
+		background: linear-gradient(
+			90deg,
+			hsl(120, 65%, 45%) 0%,
+			hsl(120, 65%, 40%) 35%,
+			hsl(120, 65%, 35%) 100%
+		);
+		height: 100%;
+		text-align: center;
 	}
 }
 
