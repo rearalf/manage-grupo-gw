@@ -4,14 +4,21 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"prod": "cross-env NODE_ENV=production webpack --mode production --config webpack.build.config.js && electron --noDevServer .",
-		"start": "cross-env NODE_ENV=development webpack serve --hot --host 0.0.0.0 --config=./webpack.dev.config.js --mode development",
-		"build": "cross-env NODE_ENV=production webpack --config webpack.build.config.js --mode production",
+		"prod": "cross-env NODE_ENV=production webpack --config webpack.build.config.js && electron --noDevServer .",
+		"start": "cross-env NODE_ENV=development webpack serve --hot --host 0.0.0.0 --config=./webpack.dev.config.js",
+		"build": "cross-env NODE_ENV=production webpack --config webpack.build.config.js",
 		"package": "npm run build",
-		"postpackage": "electron-packager ./ --out=./builds"
+		"package-mac": "electron-packager . manage-grupo-gw --overwrite --platform=darwin --arch=x64 --icon=src/assets/image/icons/logo16x16.png --prune=true --out=builds",
+		"package-win": "electron-packager . manage-grupo-gw --overwrite --platform=win32 --arch=ia32 --icon=src/assets/image/icons/logo64x64.png --prune=true --out=builds --version-string.CompanyName=Alf --version-string.FileDescription=Alf --version-string.ProductName=\"Manage Grupo GW\"",
+		"package-linux": "electron-packager . manage-grupo-gw --overwrite --platform=linux --arch=x64 --icon=src/assets/image/icons/logo64x64.png --prune=true --out=builds",
+		"postpackage": "npm run package-mac && npm run package-win && npm run package-linux"
 	},
-	"keywords": [],
-	"author": "",
+	"keywords": [ "React", "Electronjs", "Electron", "sass", "webpack" ],
+	"author": {
+		"name": "Ricardo Alf",
+		"email": "rear_recinos@hotmail.com",
+		"url": "https://github.com/rearalf"
+	},
 	"license": "ISC",
 	"dependencies": {
 		"@babel/runtime": "^7.14.0",

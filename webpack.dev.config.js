@@ -3,7 +3,9 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { spawn } = require('child_process');
 
+/** @type {import('webpack').Configuration} */
 module.exports = {
+	mode: 'development',
 	module: {
 		rules: [
 			{

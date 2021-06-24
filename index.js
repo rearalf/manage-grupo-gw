@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, Notification } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const url = require('url');
 const ipc = ipcMain;
@@ -15,6 +15,12 @@ if (process.platform === 'win32') {
 	app.commandLine.appendSwitch('force-device-scale-factor', '1');
 }
 
+const icons = {
+	darwin: '/src/assets/image/icons/logo16x16.png',
+	linux: '/src/assets/image/icons/logo64x64.png',
+	win32: '/src/assets/image/icons/logo64x64.png',
+};
+
 function createWindow(){
 	mainWindow = new BrowserWindow({
 		width: 800,
@@ -28,6 +34,7 @@ function createWindow(){
 			contextIsolation: false,
 		},
 	});
+	mainWindow.setIcon(path.join(__dirname, icons[process.platform]));
 
 	let indexPath;
 
@@ -65,10 +72,6 @@ function createWindow(){
 		}
 	});
 
-	/* mainWindow.on('closed', function(){
-		mainWindow = null;
-	}); */
-
 	ipc.on('closed', () => {
 		mainWindow.close();
 	});
@@ -93,14 +96,6 @@ function createWindow(){
 		mainWindow.webContents.send('isRestore');
 	});
 }
-
-/* const NOTIFICATION_TITLE = 'Starting';
-const NOTIFICATION_BODY = 'The program is starting';
-
-function showNotification(){
-	new Notification({ title: NOTIFICATION_TITLE, body: NOTIFICATION_BODY }).show();
-} */
-/* app.whenReady().then(showNotification); */
 
 app.on('ready', createWindow);
 
