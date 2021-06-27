@@ -19,25 +19,27 @@ export const ShowCatalogs = () => {
 			</div>
 			{loading ? (
 				<Loader />
-			) : catalogs.length !== 0 ? (
+			) : catalogs && catalogs.length !== 0 ? (
 				<Cards>
-					{catalogs.map(({ title, image, name, id, description }) => {
+					{catalogs.map(({ title, url__file, name, id, description, name__file }) => {
 						return (
 							<div className="card__catalogs" key={id}>
 								<div className="card__image">
-									<img src={image} alt={`Categoría ${name} `} />
+									<img src={url__file} alt={`Categoría ${name} `} />
 								</div>
 								<div className="card__information">
 									<h2>{title}</h2>
 									<p>{description}</p>
 								</div>
 								<div className="card__action">
-									<button className="btn__action">
+									<button
+										className="btn__action"
+										onClick={() => history.push(`/catalogs/edit/${id}`)}>
 										<Edit Width={14} Height={14} />
 									</button>
 									<button
 										className="btn__action"
-										onClick={() => useDeleteCatalog({ id })}>
+										onClick={() => useDeleteCatalog({ id, name__file })}>
 										<Trash Width={14} Height={14} />
 									</button>
 								</div>

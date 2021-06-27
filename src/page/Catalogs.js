@@ -1,13 +1,13 @@
 import React from 'react';
 import { AppLayout } from '../components/AppLayout';
 import { ShowCatalogs } from '../components/Catalogs/ShowCatalogs';
-import { useCatalogs } from '../hooks/useCatalogs';
 import { AddCatalog } from '../components/Catalogs/AddCatalog';
+import { EditCatalog } from '../components/Catalogs/EditCatalog';
 import { useParams } from 'react-router-dom';
 import '../assets/styles/page/catalogs.scss';
 
 export const Catalogs = () => {
-	const { action } = useParams();
+	const { action, id } = useParams();
 	return (
 		<AppLayout ClassName="Catalogs">
 			<h1>Catálogos</h1>
@@ -16,7 +16,7 @@ export const Catalogs = () => {
 			) : action === 'add' ? (
 				<AddCatalog />
 			) : (
-				<h1>Hello</h1>
+				<EditCatalog id={id} />
 			)}
 		</AppLayout>
 	);
