@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { useNavBar } from '../hooks/useNavBar';
 import { Navbar } from '../components/Navbar';
+import { MessageWarning, Notification } from './Message';
 
 export const AppLayout = ({ children, ClassName = '' }) => {
 	const { toggle, setToggle } = useNavBar();
@@ -10,6 +11,8 @@ export const AppLayout = ({ children, ClassName = '' }) => {
 			<main className={`content ${toggle ? 'layout' : ''} ${ClassName}`} id="layout">
 				{children}
 			</main>
+			<Notification />
+			<MessageWarning />
 		</Fragment>
 	);
 };

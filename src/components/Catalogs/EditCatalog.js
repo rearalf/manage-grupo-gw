@@ -1,18 +1,21 @@
 import React from 'react';
-import { useChangePage, useEditCatalog } from '../../hooks/useCatalogs';
+import { useEditCatalog } from '../../hooks/useCatalogs';
+import { FiSave, FiXCircle } from 'react-icons/fi';
+import { MessageWarning } from '../Message';
+import { useHistory } from 'react-router-dom';
 
 export const EditCatalog = ({ id = '' }) => {
-	const { ChangePage } = useChangePage('show');
+	const history = useHistory();
 	const {
 		upload,
 		description,
 		title,
 		name__file,
 		url__file,
-		file__image,
 		ChangeInput,
 		ChangeFileName,
 		EditCatalog,
+		CancelButton,
 	} = useEditCatalog({
 		id,
 	});
@@ -83,10 +86,10 @@ export const EditCatalog = ({ id = '' }) => {
 				</div>
 				<div className="button__group">
 					<button className="btn btn__save" onClick={EditCatalog}>
-						Guardar
+						<FiSave /> Guardar
 					</button>
-					<button className="btn btn__danger" onClick={ChangePage}>
-						Cancelar
+					<button className="btn btn__danger" onClick={CancelButton}>
+						<FiXCircle />Cancelar
 					</button>
 				</div>
 			</form>

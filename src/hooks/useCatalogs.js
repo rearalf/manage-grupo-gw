@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import notificationContext from '../context/notificationContext';
 import {
 	addCatalog,
 	deleteCatalog,
@@ -8,17 +9,6 @@ import {
 	GetCatalogs,
 	upImageCatalog,
 } from '../database/Catalogs';
-
-export const useChangePage = page => {
-	const history = useHistory();
-	const ChangePage = e => {
-		e.preventDefault();
-		history.push(`/catalogs/${page}`);
-	};
-	return {
-		ChangePage,
-	};
-};
 
 export const useGetCatalogs = () => {
 	const [ catalogs, setCatalogs ] = useState([]);
@@ -55,6 +45,7 @@ export const useAddCatalog = () => {
 		url__file: '',
 	});
 	const [ upload, setUpload ] = useState(0);
+	const { setMessage, message, setNotification } = useContext(notificationContext);
 
 	const ChangeInput = e => setCatalog({ ...catalog, [e.target.name]: e.target.value });
 
@@ -79,6 +70,22 @@ export const useAddCatalog = () => {
 		await upImageCatalog({ setUpload, setCatalog, catalog });
 	};
 
+	const CancelButton = e => {
+		e.preventDefault();
+		setMessage({
+			isOpenMessage: true,
+			titleMessage: '¿Desea salir de está pagina?',
+			subTitleMessage: 'Si sale, perdera la información que no a guardado.',
+			onConfirm: () => {
+				setMessage({
+					...message,
+					isOpenMessage: false,
+				});
+				history.push(`/catalogs/show`);
+			},
+		});
+	};
+
 	useEffect(
 		() => {
 			if (upload === 100 && catalog.name__file !== '') {
@@ -87,6 +94,12 @@ export const useAddCatalog = () => {
 				})
 					.then(data => {
 						console.log(data);
+						setNotification({
+							isOpen: true,
+							title: 'Success',
+							subTitle: 'La operación fue un éxito.',
+							type: 'success',
+						});
 						history.push('/catalogs/show');
 					})
 					.catch(error => {
@@ -103,14 +116,39 @@ export const useAddCatalog = () => {
 		ChangeFileName,
 		AddCatalog,
 		upload,
+		CancelButton,
 	};
 };
 
-export const useDeleteCatalog = ({ id, name__file }) => {
-	deleteCatalog({
-		id,
-		name__file,
-	});
+export const useDeleteCatalog = () => {
+	const { setMessage, message, setNotification } = useContext(notificationContext);
+	const DeleteCatalog = ({ id, name__file }) => {
+		setMessage({
+			isOpenMessage: true,
+			titleMessage: '¿Desea eliminar este catálogo?',
+			subTitleMessage: 'Esta acción sera permanente.',
+			onConfirm: () => {
+				setMessage({
+					...message,
+					isOpenMessage: false,
+				});
+				deleteCatalog({
+					id,
+					name__file,
+				}).then(() => {
+					setNotification({
+						isOpen: true,
+						title: 'Success',
+						subTitle: 'La operación fue un éxito.',
+						type: 'success',
+					});
+				});
+			},
+		});
+	};
+	return {
+		DeleteCatalog,
+	};
 };
 
 export const useEditCatalog = ({ id }) => {
@@ -123,6 +161,7 @@ export const useEditCatalog = ({ id }) => {
 		url__file: '',
 	});
 	const [ upload, setUpload ] = useState(0);
+	const { setNotification, message, setMessage } = useContext(notificationContext);
 
 	const ChangeInput = e => setCatalog({ ...catalog, [e.target.name]: e.target.value });
 
@@ -154,6 +193,28 @@ export const useEditCatalog = ({ id }) => {
 				editCatalog({ catalog, id });
 			});
 		}
+		setNotification({
+			isOpen: true,
+			title: 'Success',
+			subTitle: 'La operación fue un éxito.',
+			type: 'success',
+		});
+	};
+
+	const CancelButton = e => {
+		e.preventDefault();
+		setMessage({
+			isOpenMessage: true,
+			titleMessage: '¿Desea salir de está pagina?',
+			subTitleMessage: 'Si sale, perdera la información que no a guardado.',
+			onConfirm: () => {
+				setMessage({
+					...message,
+					isOpenMessage: false,
+				});
+				history.push(`/catalogs/show`);
+			},
+		});
 	};
 
 	useEffect(() => {
@@ -186,6 +247,6 @@ export const useEditCatalog = ({ id }) => {
 		description: catalog.description,
 		name__file: catalog.name__file,
 		url__file: catalog.url__file,
-		file__image: catalog.file__image,
+		CancelButton,
 	};
 };

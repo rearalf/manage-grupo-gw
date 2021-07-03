@@ -71,6 +71,9 @@ a {
 	transition: all .3s ease-in-out;
 	cursor: pointer;
 	text-align: center;
+	display: flex;
+	align-items: center;
+	gap: 10px;
 }
 
 .btn__primary {
@@ -94,7 +97,6 @@ a {
 .btn__danger {
 	background-color: $background-button-danger;
 	color: $text-color-button-danger;
-	border: 2px solid $border-button-danger;
 	&:hover {
 		background-color: $background-button-danger-hover;
 		color: $text-color-button-danger-hover;
@@ -103,22 +105,19 @@ a {
 }
 
 .progress__bar {
-	width: 300px;
+	position: relative;
 	height: 20px;
-	border-radius: 5px;
-	background-color: $background-secondary;
-	box-shadow: 4px 4px 4px 0 $shadow-color-second;
+	width: 300px;
+	border-radius: 50px;
+	border: 1px solid $border-button-danger;
+	box-shadow: $box-shadow-button-danger;
 	.percentage {
 		color: $text-color-button-save;
-		border-radius: 5px;
-		background: linear-gradient(
-			90deg,
-			hsl(120, 65%, 45%) 0%,
-			hsl(120, 65%, 40%) 35%,
-			hsl(120, 65%, 35%) 100%
-		);
-		height: 100%;
 		text-align: center;
+		background: $border-button-danger;
+		height: 100%;
+		border-radius: inherit;
+		transition: width .2s ease-in;
 	}
 }
 

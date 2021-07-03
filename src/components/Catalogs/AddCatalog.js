@@ -1,10 +1,16 @@
 import React from 'react';
-import { useAddCatalog, useChangePage } from '../../hooks/useCatalogs';
-import '../../assets/styles/page/catalogs.scss';
+import { FiSave, FiXCircle } from 'react-icons/fi';
+import { useAddCatalog } from '../../hooks/useCatalogs';
 
 export const AddCatalog = () => {
-	const { ChangePage } = useChangePage('show');
-	const { catalog, ChangeInput, ChangeFileName, AddCatalog, upload } = useAddCatalog();
+	const {
+		catalog,
+		ChangeInput,
+		ChangeFileName,
+		AddCatalog,
+		upload,
+		CancelButton,
+	} = useAddCatalog();
 
 	return (
 		<div className="add__catalog">
@@ -73,10 +79,10 @@ export const AddCatalog = () => {
 				</div>
 				<div className="button__group">
 					<button className="btn btn__save" onClick={AddCatalog}>
-						Guardar
+						<FiSave /> Guardar
 					</button>
-					<button className="btn btn__danger" onClick={ChangePage}>
-						Cancelar
+					<button className="btn btn__danger" onClick={CancelButton}>
+						<FiXCircle /> Cancelar
 					</button>
 				</div>
 			</form>

@@ -34,17 +34,23 @@ header {
 				cursor: pointer;
 				background-color: transparent;
 				border: transparent;
-				.svg {
+				svg {
 					path {
 						fill: $color-text-link;
+					}
+					line {
+						color: $color-text-link;
 					}
 				}
 
 				&:hover {
 					background-color: $color-text-first;
-					.svg {
+					svg {
 						path {
 							fill: $background-primary;
+						}
+						line {
+							color: $background-primary;
 						}
 					}
 				}
@@ -90,17 +96,23 @@ header {
 				cursor: pointer;
 				background-color: transparent;
 				border: transparent;
-				.svg {
+				svg {
 					path {
 						fill: $color-text-link;
+					}
+					line {
+						color: $color-text-link;
 					}
 				}
 
 				&:hover {
 					background-color: $color-text-first;
-					.svg {
+					svg {
 						path {
 							fill: $background-primary;
+						}
+						line {
+							color: $background-primary;
 						}
 					}
 				}
@@ -108,17 +120,29 @@ header {
 		}
 
 		.navbar__nav {
+			padding: 0 32px;
 			.nav__item {
+				border-radius: 8px;
+				font-size: 16px;
 				.nav__link {
-					display: inline-block;
+					display: flex;
+					align-items: center;
 					cursor: pointer;
-					padding: 15px 25px;
-					width: 100%;
+					padding: 16px 32px;
 					&:hover {
 						background-color: $background-primary;
 						a {
 							color: $color-text-link-hover;
 						}
+						svg {
+							path {
+								stroke: $color-text-link-hover;
+							}
+						}
+					}
+
+					svg {
+						margin-right: 10px;
 					}
 				}
 			}

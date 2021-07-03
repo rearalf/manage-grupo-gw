@@ -1,20 +1,19 @@
 import React, { Fragment } from 'react';
-import Edit from '../../components/icons/Edit';
-import Trash from '../../components/icons/Trash';
+import { FiTrash, FiEdit, FiPlus } from 'react-icons/fi';
 import { Cards } from '../Cards';
 import { useDeleteCatalog, useGetCatalogs } from '../../hooks/useCatalogs';
 import { Loader } from '../Loader';
 import { useHistory } from 'react-router-dom';
-import '../../assets/styles/page/catalogs.scss';
 
 export const ShowCatalogs = () => {
 	const history = useHistory();
 	const { catalogs, loading } = useGetCatalogs();
+	const { DeleteCatalog } = useDeleteCatalog();
 	return (
 		<Fragment>
 			<div className="btn__group">
 				<button className="btn btn__primary" onClick={() => history.push('/catalogs/add')}>
-					+ Catálogo
+					<FiPlus size={16} title={'Agregar un catálogo'} /> Catálogo
 				</button>
 			</div>
 			{loading ? (
@@ -35,12 +34,18 @@ export const ShowCatalogs = () => {
 									<button
 										className="btn__action"
 										onClick={() => history.push(`/catalogs/edit/${id}`)}>
-										<Edit Width={14} Height={14} />
+										<FiEdit title={'Editar catálogo'} size={16} />
 									</button>
 									<button
 										className="btn__action"
-										onClick={() => useDeleteCatalog({ id, name__file })}>
-										<Trash Width={14} Height={14} />
+										onClick={e => {
+											e.preventDefault();
+											DeleteCatalog({
+												id,
+												name__file,
+											});
+										}}>
+										<FiTrash title={'Eliminar catálogo'} size={16} />
 									</button>
 								</div>
 							</div>

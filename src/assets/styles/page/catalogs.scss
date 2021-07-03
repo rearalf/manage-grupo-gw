@@ -8,7 +8,8 @@
 
 	.btn__group {
 		margin-bottom: 25px;
-		text-align: right;
+		display: flex;
+		justify-content: flex-end;
 	}
 
 	.cards {
@@ -56,16 +57,24 @@
 					cursor: pointer;
 					transition: all $first-transition;
 					border-radius: 5px;
-					.svg {
+					svg {
 						path {
-							fill: $color-text-icon-hover;
+							stroke: $color-text-icon-hover;
 						}
 					}
 					&:nth-child(2n + 1) {
 						background-color: #23be3d;
 					}
 					&:nth-child(2n) {
-						background-color: #be3323;
+						background-color: transparent;
+						svg {
+							path {
+								stroke: #be3323;
+							}
+							polyline {
+								stroke: #be3323;
+							}
+						}
 					}
 					&:hover {
 						opacity: .9;
@@ -73,7 +82,16 @@
 							box-shadow: 4px 4px 4px 0 hsl(130, 69%, 44%, .5);
 						}
 						&:nth-child(2n) {
+							background-color: #be3323;
 							box-shadow: 4px 4px 4px 0 hsl(6, 69%, 44%, .5);
+							svg {
+								path {
+									stroke: $color-text-icon-hover;
+								}
+								polyline {
+									stroke: $color-text-icon-hover;
+								}
+							}
 						}
 					}
 				}

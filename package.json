@@ -13,7 +13,13 @@
 		"package-linux": "electron-packager . manage-grupo-gw --overwrite --platform=linux --arch=x64 --icon=src/assets/image/icons/logo64x64.png --prune=true --out=builds",
 		"postpackage": "npm run package-mac && npm run package-win && npm run package-linux"
 	},
-	"keywords": [ "React", "Electronjs", "Electron", "sass", "webpack" ],
+	"keywords": [
+		"React",
+		"Electronjs",
+		"Electron",
+		"sass",
+		"webpack"
+	],
 	"author": {
 		"name": "Ricardo Alf",
 		"email": "rear_recinos@hotmail.com",
@@ -25,6 +31,7 @@
 		"firebase": "^8.6.5",
 		"react": "^17.0.2",
 		"react-dom": "^17.0.2",
+		"react-icons": "^4.2.0",
 		"react-router-dom": "^5.2.0"
 	},
 	"devDependencies": {
